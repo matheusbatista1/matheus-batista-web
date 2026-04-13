@@ -1,0 +1,75 @@
+{
+  "metadata": {
+    "title": "Matheus Batista | Software Engineer",
+    "description": "Software Engineer based in Brazil. Designing and implementing scalable APIs and web systems."
+  },
+  "nav": {
+    "home": "Home",
+    "projects": "Projects",
+    "skills": "Skills",
+    "about": "About",
+    "contact": "Contact",
+    "menu": "menu"
+  },
+  "hero": {
+    "greeting": "I'm",
+    "name": "Matheus Batista",
+    "role": "a software engineer based in Brazil",
+    "available": "Available for opportunities",
+    "scroll": "scroll"
+  },
+  "projects": {
+    "sectionTitle": "MY PROJECTS",
+    "marquee": "PROJECTS",
+    "viewProject": "View project",
+    "visitSite": "Visit site",
+    "viewCode": "View code",
+    "techStack": "Tech Stack"
+  },
+  "about": {
+    "sectionTitle": "ABOUT ME",
+    "available": "Available To Work",
+    "greeting": "hi!",
+    "decorativeText": "software engineer"
+  },
+  "skills": {
+    "sectionTitle": "MY TECH SKILLS",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "database": "Database",
+    "devops": "DevOps",
+    "tools": "Tools"
+  },
+  "contact": {
+    "sectionTitle": "CONTACT",
+    "cta": "Let's talk about your PROJECT",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "subject": "Subject",
+      "message": "Message",
+      "send": "Send message",
+      "sending": "Sending..."
+    },
+    "modal": {
+      "sentTitle": "Message sent!",
+      "sentDescription": "Thank you for reaching out. I'll get back to you soon.",
+      "errorTitle": "Failed to send",
+      "errorDescription": "Something went wrong. Please try again later.",
+      "close": "Close"
+    }
+  },
+  "footer": {
+    "cta": "Let's talk about your PROJECT",
+    "available": "available for opportunities",
+    "downloadCv": "download CV",
+    "copyright": "Copyright © 2025 Matheus dos Santos Batista | All rights reserved."
+  },
+  "error": {
+    "notFound": "NOTHING IS HERE",
+    "goHome": "GO BACK HOME"
+  },
+  "common": {
+    "loading": "Loading..."
+  }
+}

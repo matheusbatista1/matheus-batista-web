@@ -1,0 +1,75 @@
+{
+  "metadata": {
+    "title": "Matheus Batista | Ingeniero de Software",
+    "description": "Ingeniero de Software basado en Brasil. Diseñando e implementando APIs escalables y sistemas web."
+  },
+  "nav": {
+    "home": "Inicio",
+    "projects": "Proyectos",
+    "skills": "Habilidades",
+    "about": "Sobre",
+    "contact": "Contacto",
+    "menu": "menú"
+  },
+  "hero": {
+    "greeting": "Soy",
+    "name": "Matheus Batista",
+    "role": "un ingeniero de software basado en Brasil",
+    "available": "Disponible para oportunidades",
+    "scroll": "scroll"
+  },
+  "projects": {
+    "sectionTitle": "MIS PROYECTOS",
+    "marquee": "PROYECTOS",
+    "viewProject": "Ver proyecto",
+    "visitSite": "Visitar sitio",
+    "viewCode": "Ver código",
+    "techStack": "Tecnologías"
+  },
+  "about": {
+    "sectionTitle": "SOBRE MÍ",
+    "available": "Disponible Para Trabajar",
+    "greeting": "¡hola!",
+    "decorativeText": "ingeniero de software"
+  },
+  "skills": {
+    "sectionTitle": "MIS HABILIDADES",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "database": "Base de Datos",
+    "devops": "DevOps",
+    "tools": "Herramientas"
+  },
+  "contact": {
+    "sectionTitle": "CONTACTO",
+    "cta": "Hablemos sobre tu PROYECTO",
+    "form": {
+      "name": "Nombre",
+      "email": "Correo",
+      "subject": "Asunto",
+      "message": "Mensaje",
+      "send": "Enviar mensaje",
+      "sending": "Enviando..."
+    },
+    "modal": {
+      "sentTitle": "¡Mensaje enviado!",
+      "sentDescription": "Gracias por contactarme. Responderé pronto.",
+      "errorTitle": "Error al enviar",
+      "errorDescription": "Algo salió mal. Inténtalo de nuevo más tarde.",
+      "close": "Cerrar"
+    }
+  },
+  "footer": {
+    "cta": "Hablemos sobre tu PROYECTO",
+    "available": "disponible para oportunidades",
+    "downloadCv": "descargar CV",
+    "copyright": "Copyright © 2025 Matheus dos Santos Batista | Todos los derechos reservados."
+  },
+  "error": {
+    "notFound": "NADA AQUÍ",
+    "goHome": "VOLVER AL INICIO"
+  },
+  "common": {
+    "loading": "Cargando..."
+  }
+}
