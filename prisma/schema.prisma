@@ -1,0 +1,270 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ─── Enums ───────────────────────────────────────────────
+
+enum Locale {
+  PT
+  EN
+  ES
+}
+
+enum ContactStatus {
+  UNREAD
+  READ
+  REPLIED
+  ARCHIVED
+}
+
+// ─── Auth (Auth.js v5 + Prisma Adapter) ──────────────────
+
+model AdminUser {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  name          String?
+  image         String?
+  emailVerified DateTime?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  accounts Account[]
+  sessions Session[]
+
+  @@map("admin_users")
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user AdminUser @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+
+  user AdminUser @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map("verification_tokens")
+}
+
+// ─── Projects ────────────────────────────────────────────
+
+model Project {
+  id           String   @id @default(cuid())
+  slug         String   @unique
+  thumbnailUrl String?
+  liveUrl      String?
+  repoUrl      String?
+  featured     Boolean  @default(false)
+  published    Boolean  @default(false)
+  sortOrder    Int      @default(0)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  translations ProjectTranslation[]
+  tags         ProjectTag[]
+  techStack    ProjectTechStack[]
+
+  @@map("projects")
+}
+
+model ProjectTranslation {
+  id               String @id @default(cuid())
+  projectId        String
+  locale           Locale
+  title            String
+  description      String @db.Text
+  shortDescription String? @db.VarChar(300)
+
+  project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@unique([projectId, locale])
+  @@map("project_translations")
+}
+
+model Tag {
+  id       String       @id @default(cuid())
+  name     String       @unique
+  projects ProjectTag[]
+
+  @@map("tags")
+}
+
+model ProjectTag {
+  projectId String
+  tagId     String
+
+  project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  tag     Tag     @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+  @@id([projectId, tagId])
+  @@map("project_tags")
+}
+
+// ─── Tech Items (shared between projects and skills) ─────
+
+model TechItem {
+  id       String             @id @default(cuid())
+  name     String             @unique
+  iconUrl  String?
+  projects ProjectTechStack[]
+  skills   TechSkill[]
+
+  @@map("tech_items")
+}
+
+model ProjectTechStack {
+  projectId  String
+  techItemId String
+
+  project  Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  techItem TechItem @relation(fields: [techItemId], references: [id], onDelete: Cascade)
+
+  @@id([projectId, techItemId])
+  @@map("project_tech_stacks")
+}
+
+// ─── About Me ────────────────────────────────────────────
+
+model AboutContent {
+  id        String   @id @default(cuid())
+  photoUrl  String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  translations AboutContentTranslation[]
+
+  @@map("about_contents")
+}
+
+model AboutContentTranslation {
+  id             String @id @default(cuid())
+  aboutContentId String
+  locale         Locale
+  title          String
+  bio            String @db.Text
+  headline       String? @db.VarChar(500)
+
+  aboutContent AboutContent @relation(fields: [aboutContentId], references: [id], onDelete: Cascade)
+
+  @@unique([aboutContentId, locale])
+  @@map("about_content_translations")
+}
+
+// ─── Tech Skills ─────────────────────────────────────────
+
+model SkillCategory {
+  id        String   @id @default(cuid())
+  sortOrder Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  translations SkillCategoryTranslation[]
+  skills       TechSkill[]
+
+  @@map("skill_categories")
+}
+
+model SkillCategoryTranslation {
+  id              String @id @default(cuid())
+  skillCategoryId String
+  locale          Locale
+  name            String
+  description     String? @db.Text
+
+  skillCategory SkillCategory @relation(fields: [skillCategoryId], references: [id], onDelete: Cascade)
+
+  @@unique([skillCategoryId, locale])
+  @@map("skill_category_translations")
+}
+
+model TechSkill {
+  id              String @id @default(cuid())
+  techItemId      String
+  skillCategoryId String
+  proficiency     Int    @default(0)
+  sortOrder       Int    @default(0)
+
+  techItem      TechItem      @relation(fields: [techItemId], references: [id], onDelete: Cascade)
+  skillCategory SkillCategory @relation(fields: [skillCategoryId], references: [id], onDelete: Cascade)
+
+  @@unique([techItemId, skillCategoryId])
+  @@map("tech_skills")
+}
+
+// ─── Contact Messages ────────────────────────────────────
+
+model ContactMessage {
+  id        String        @id @default(cuid())
+  name      String
+  email     String
+  subject   String?
+  message   String        @db.Text
+  status    ContactStatus @default(UNREAD)
+  ipAddress String?
+  userAgent String?
+  createdAt DateTime      @default(now())
+  readAt    DateTime?
+
+  @@index([status])
+  @@index([createdAt])
+  @@map("contact_messages")
+}
+
+// ─── Resume / CV ─────────────────────────────────────────
+
+model Resume {
+  id        String   @id @default(cuid())
+  locale    Locale
+  fileUrl   String
+  fileName  String
+  fileSize  Int
+  mimeType  String   @default("application/pdf")
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+
+  @@index([locale, active])
+  @@map("resumes")
+}
+
+// ─── Site Settings (key-value) ───────────────────────────
+
+model SiteSetting {
+  id    String @id @default(cuid())
+  key   String @unique
+  value String @db.Text
+
+  @@map("site_settings")
+}
