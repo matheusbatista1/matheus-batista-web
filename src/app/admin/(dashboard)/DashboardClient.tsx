@@ -84,7 +84,7 @@ export function DashboardClient({ initialData }: Props) {
       <div className="mb-8 flex items-center justify-between">
         <h1 className="text-[24px] font-semibold">Dashboard</h1>
         <div className="flex items-center gap-3">
-          <span className="text-[11px] text-[#4a4a4e]">
+          <span className="text-[11px] text-[#4a4a4e]" suppressHydrationWarning>
             Updated {lastUpdate.toLocaleTimeString()}
           </span>
           <button

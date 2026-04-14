@@ -14,7 +14,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     error: "/admin/login",
   },
   callbacks: {
-    async signIn({ user, account }) {
+    async signIn({ user, account, profile }) {
       if (!ADMIN_EMAIL) return false;
       if (user.email?.toLowerCase() !== ADMIN_EMAIL.toLowerCase()) {
         return false;
@@ -54,13 +54,15 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
             });
           }
 
-          // Atualizar foto e nome do perfil OAuth
-          if (user.image || user.name) {
+          // Atualizar foto e nome do perfil OAuth (profile tem os dados frescos do provider)
+          const profileImage = (profile?.picture as string) || (profile?.image as string) || user.image;
+          const profileName = (profile?.name as string) || user.name;
+          if (profileImage || profileName) {
             await prisma.user.update({
               where: { id: existingUser.id },
               data: {
-                ...(user.image && { image: user.image }),
-                ...(user.name && !existingUser.name && { name: user.name }),
+                ...(profileImage && { image: profileImage }),
+                ...(profileName && { name: profileName }),
               },
             });
           }
