@@ -30,7 +30,8 @@
     "viewCode": "View code",
     "techStack": "Tech Stack",
     "featured": "Featured",
-    "placeholder": "Project thumbnails from database"
+    "placeholder": "Project thumbnails from database",
+    "noProjects": "Projects coming soon"
   },
   "about": {
     "sectionTitle": "ABOUT ME",

@@ -30,7 +30,8 @@
     "viewCode": "Ver código",
     "techStack": "Tecnologias",
     "featured": "Destaque",
-    "placeholder": "Thumbnails dos projetos do banco de dados"
+    "placeholder": "Thumbnails dos projetos do banco de dados",
+    "noProjects": "Projetos em breve"
   },
   "about": {
     "sectionTitle": "SOBRE MIM",

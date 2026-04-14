@@ -30,7 +30,8 @@
     "viewCode": "Ver código",
     "techStack": "Tecnologías",
     "featured": "Destacado",
-    "placeholder": "Thumbnails de proyectos de la base de datos"
+    "placeholder": "Thumbnails de proyectos de la base de datos",
+    "noProjects": "Proyectos próximamente"
   },
   "about": {
     "sectionTitle": "SOBRE MÍ",

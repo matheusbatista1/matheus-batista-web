@@ -17,6 +17,7 @@ export default function NewProjectPage() {
     const formData = new FormData();
 
     formData.set("slug", (form.elements.namedItem("slug") as HTMLInputElement).value);
+    formData.set("thumbnailUrl", (form.elements.namedItem("thumbnailUrl") as HTMLInputElement).value);
     formData.set("liveUrl", (form.elements.namedItem("liveUrl") as HTMLInputElement).value);
     formData.set("repoUrl", (form.elements.namedItem("repoUrl") as HTMLInputElement).value);
     formData.set("featured", (form.elements.namedItem("featured") as HTMLInputElement).checked ? "true" : "false");
@@ -61,6 +62,9 @@ export default function NewProjectPage() {
       <form onSubmit={handleSubmit} className="max-w-2xl space-y-6">
         {/* Slug */}
         <Field label="Slug" name="slug" placeholder="my-project" required />
+
+        {/* Thumbnail URL */}
+        <Field label="Thumbnail URL (cover image)" name="thumbnailUrl" placeholder="https://..." />
 
         {/* Titles per locale */}
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3">

@@ -10,15 +10,17 @@ import { AboutSection } from "@/components/sections/AboutSection";
 import { SkillsSection } from "@/components/sections/SkillsSection";
 import { ContactWindow } from "@/components/contact/ContactWindow";
 import type { SocialLinks } from "@/lib/getSiteSettings";
+import type { ProjectItem } from "@/components/sections/ProjectsSection";
 
 type Props = {
   social: SocialLinks;
   cvUrl: string;
   available: boolean;
   bio?: string;
+  projects?: ProjectItem[];
 };
 
-export function HomePageClient({ social, available, bio }: Props) {
+export function HomePageClient({ social, available, bio, projects }: Props) {
   const [contactOpen, setContactOpen] = useState(false);
   const locale = useLocale();
 
@@ -35,7 +37,7 @@ export function HomePageClient({ social, available, bio }: Props) {
           cvUrl={localeCvUrl}
           available={available}
         />
-        <ProjectsSection />
+        <ProjectsSection projects={projects} />
         <AboutSection onContactOpen={() => setContactOpen(true)} available={available} bio={bio} />
         <SkillsSection />
       </main>
