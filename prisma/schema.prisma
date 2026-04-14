@@ -24,7 +24,7 @@ enum ContactStatus {
 
 // ─── Auth (Auth.js v5 + Prisma Adapter) ──────────────────
 
-model AdminUser {
+model User {
   id            String    @id @default(cuid())
   email         String    @unique
   name          String?
@@ -53,7 +53,7 @@ model Account {
   id_token          String? @db.Text
   session_state     String?
 
-  user AdminUser @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
   @@map("accounts")
@@ -65,7 +65,7 @@ model Session {
   userId       String
   expires      DateTime
 
-  user AdminUser @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("sessions")
 }

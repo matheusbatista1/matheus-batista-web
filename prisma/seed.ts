@@ -16,7 +16,7 @@ async function main() {
     throw new Error("ADMIN_EMAIL environment variable is required for seeding");
   }
 
-  await prisma.adminUser.upsert({
+  await prisma.user.upsert({
     where: { email: adminEmail },
     update: {},
     create: {
