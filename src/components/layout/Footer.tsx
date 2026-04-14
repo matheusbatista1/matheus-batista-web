@@ -35,7 +35,9 @@ export function Footer() {
           className="mb-10 text-center"
         >
           <h2 className="text-[40px] font-bold uppercase leading-[1.1] text-text-primary md:text-[72px] lg:text-[100px] lg:leading-[1.05]">
-            {t("cta")}
+            LET&apos;S TALK YOUR
+            <br />
+            <span className="text-text-tertiary">PROJECT</span>
           </h2>
         </motion.div>
 
@@ -51,7 +53,7 @@ export function Footer() {
             href="mailto:matheusbatista.tech@gmail.com"
             className="flex items-center gap-4 rounded-full border border-border px-8 py-5 text-text-secondary transition-all hover:border-text-secondary hover:text-text-primary"
           >
-            <span className="text-[16px] md:text-[18px]">
+            <span className="text-[14px] uppercase tracking-wider md:text-[16px]">
               matheusbatista.tech@gmail.com
             </span>
             <div className="flex size-[25px] items-center justify-center">

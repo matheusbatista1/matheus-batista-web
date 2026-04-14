@@ -85,7 +85,7 @@ export function HeroSection() {
             <span className="relative inline-flex size-[12px] rounded-full bg-success" />
           </span>
           <span className="text-[13px] tracking-[0.5px] text-text-secondary">
-            {t("available")}
+            Available for <strong className="font-semibold text-text-primary">roles</strong> and <strong className="font-semibold text-text-primary">projects</strong>.
           </span>
         </motion.div>
       </div>
