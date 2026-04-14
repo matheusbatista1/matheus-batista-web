@@ -83,7 +83,7 @@
 
   --color-modal-backdrop: var(--color-modal-backdrop);
 
-  --font-sans: var(--font-inter);
+  --font-sans: var(--font-poppins);
 }
 
 /* ─── Base Styles ─── */
@@ -121,4 +121,18 @@ body {
 ::selection {
   background-color: var(--color-accent);
   color: #ffffff;
+}
+
+/* ─── Animations ─── */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 60s linear infinite;
 }

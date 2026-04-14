@@ -3,15 +3,16 @@ import type { ReactNode } from "react";
 import { notFound } from "next/navigation";
 import { getMessages } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
-import { Inter } from "next/font/google";
+import { Poppins } from "next/font/google";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { routing } from "@/i18n/routing";
 import { SITE_CONFIG } from "@/lib/constants";
 import "../globals.css";
 
-const inter = Inter({
+const poppins = Poppins({
   subsets: ["latin"],
-  variable: "--font-inter",
+  weight: ["200", "300", "400", "500", "600", "700", "800"],
+  variable: "--font-poppins",
   display: "swap",
 });
 
@@ -79,7 +80,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   return (
     <html
       lang={locale}
-      className={`${inter.variable} h-full antialiased`}
+      className={`${poppins.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col font-sans">
