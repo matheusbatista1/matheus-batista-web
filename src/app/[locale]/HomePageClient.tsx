@@ -14,9 +14,10 @@ import type { SocialLinks } from "@/lib/getSiteSettings";
 type Props = {
   social: SocialLinks;
   cvUrl: string;
+  available: boolean;
 };
 
-export function HomePageClient({ social, cvUrl }: Props) {
+export function HomePageClient({ social, cvUrl, available }: Props) {
   const [contactOpen, setContactOpen] = useState(false);
   const locale = useLocale();
 
@@ -31,6 +32,7 @@ export function HomePageClient({ social, cvUrl }: Props) {
           linkedin={social.linkedin}
           email={social.email}
           cvUrl={localeCvUrl}
+          available={available}
         />
         <ProjectsSection />
         <AboutSection onContactOpen={() => setContactOpen(true)} />
@@ -42,6 +44,7 @@ export function HomePageClient({ social, cvUrl }: Props) {
         behance={social.behance}
         email={social.email}
         cvUrl={localeCvUrl}
+        available={available}
       />
       <ContactWindow
         isOpen={contactOpen}

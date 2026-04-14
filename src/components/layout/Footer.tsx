@@ -10,15 +10,17 @@ type Props = {
   behance?: string;
   email?: string;
   cvUrl?: string;
+  available?: boolean;
 };
 
-export function Footer({ github, linkedin, behance, email, cvUrl }: Props) {
+export function Footer({ github, linkedin, behance, email, cvUrl, available = true }: Props) {
   const t = useTranslations("footer");
 
   return (
     <footer id="footer" className="relative bg-bg-primary pb-8 pt-40">
       <div className="mx-auto max-w-[1920px] px-8 md:px-16 lg:px-24">
         {/* Available tag */}
+        {available && (
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -34,6 +36,7 @@ export function Footer({ github, linkedin, behance, email, cvUrl }: Props) {
             </span>
           </div>
         </motion.div>
+        )}
 
         {/* CTA - "LET'S TALK YOUR PROJECT" */}
         <motion.div

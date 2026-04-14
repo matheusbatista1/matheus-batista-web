@@ -10,9 +10,10 @@ type Props = {
   linkedin?: string;
   email?: string;
   cvUrl?: string;
+  available?: boolean;
 };
 
-export function HeroSection({ github, linkedin, email, cvUrl }: Props) {
+export function HeroSection({ github, linkedin, email, cvUrl, available = true }: Props) {
   const t = useTranslations("hero");
 
   return (
@@ -81,20 +82,22 @@ export function HeroSection({ github, linkedin, email, cvUrl }: Props) {
         </motion.p>
 
         {/* Available tag */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 1.0 }}
-          className="mt-20 flex items-center gap-2.5 md:mt-28"
-        >
-          <span className="relative flex size-[24px] items-center justify-center">
-            <span className="absolute inline-flex size-[12px] animate-ping rounded-full bg-success opacity-40" />
-            <span className="relative inline-flex size-[12px] rounded-full bg-success" />
-          </span>
-          <span className="text-[13px] tracking-[0.5px] text-text-secondary">
-            Available for <strong className="font-semibold text-text-primary">roles</strong> and <strong className="font-semibold text-text-primary">projects</strong>.
-          </span>
-        </motion.div>
+        {available && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 1.0 }}
+            className="mt-20 flex items-center gap-2.5 md:mt-28"
+          >
+            <span className="relative flex size-[24px] items-center justify-center">
+              <span className="absolute inline-flex size-[12px] animate-ping rounded-full bg-success opacity-40" />
+              <span className="relative inline-flex size-[12px] rounded-full bg-success" />
+            </span>
+            <span className="text-[13px] tracking-[0.5px] text-text-secondary">
+              Available for <strong className="font-semibold text-text-primary">roles</strong> and <strong className="font-semibold text-text-primary">projects</strong>.
+            </span>
+          </motion.div>
+        )}
       </div>
 
       {/* Scroll indicator - bottom left */}
