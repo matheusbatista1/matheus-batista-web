@@ -6,9 +6,10 @@ import { motion } from "motion/react";
 type Props = {
   onContactOpen?: () => void;
   available?: boolean;
+  bio?: string;
 };
 
-export function AboutSection({ onContactOpen, available = true }: Props) {
+export function AboutSection({ onContactOpen, available = true, bio }: Props) {
   const t = useTranslations("about");
 
   return (
@@ -47,23 +48,16 @@ export function AboutSection({ onContactOpen, available = true }: Props) {
               </motion.div>
             )}
 
-            {/* Bio text - loaded from DB in future */}
-            <motion.p
+            {/* Bio text - from database */}
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ delay: 0.2 }}
-              className="text-[16px] leading-[1.9] text-text-secondary md:text-[18px]"
+              className="whitespace-pre-line text-[16px] leading-[1.9] text-text-secondary md:text-[18px]"
             >
-              I design and implement scalable APIs and web systems, from
-              code to technical documentation. I&apos;ve worked with ERPs, POS
-              systems, e-commerce platforms, and other custom
-              applications for medium and large companies.{" "}
-              <strong className="font-medium text-text-primary">
-                Currently, I&apos;m focused on backend development using the .NET ecosystem,
-                C#, SQL Server, along with Angular and Azure.
-              </strong>
-            </motion.p>
+              {bio || t("decorativeText")}
+            </motion.div>
           </div>
 
           {/* Right - greeting + send message */}

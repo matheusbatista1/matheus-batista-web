@@ -15,9 +15,10 @@ type Props = {
   social: SocialLinks;
   cvUrl: string;
   available: boolean;
+  bio?: string;
 };
 
-export function HomePageClient({ social, cvUrl, available }: Props) {
+export function HomePageClient({ social, cvUrl, available, bio }: Props) {
   const [contactOpen, setContactOpen] = useState(false);
   const locale = useLocale();
 
@@ -35,7 +36,7 @@ export function HomePageClient({ social, cvUrl, available }: Props) {
           available={available}
         />
         <ProjectsSection />
-        <AboutSection onContactOpen={() => setContactOpen(true)} available={available} />
+        <AboutSection onContactOpen={() => setContactOpen(true)} available={available} bio={bio} />
         <SkillsSection />
       </main>
       <Footer
