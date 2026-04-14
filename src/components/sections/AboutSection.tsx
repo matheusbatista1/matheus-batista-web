@@ -5,9 +5,10 @@ import { motion } from "motion/react";
 
 type Props = {
   onContactOpen?: () => void;
+  available?: boolean;
 };
 
-export function AboutSection({ onContactOpen }: Props) {
+export function AboutSection({ onContactOpen, available = true }: Props) {
   const t = useTranslations("about");
 
   return (
@@ -27,22 +28,24 @@ export function AboutSection({ onContactOpen }: Props) {
               </span>
             </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ delay: 0.1 }}
-              className="mb-8 flex items-center gap-3"
-            >
-              <div className="flex items-center gap-2 rounded-full border border-border px-4 py-2">
-                <span className="relative flex size-[12px] items-center justify-center">
-                  <span className="size-[4px] rounded-full bg-success" />
-                </span>
-                <span className="text-[14px] tracking-wide text-text-secondary">
-                  {t("available")}
-                </span>
-              </div>
-            </motion.div>
+            {available && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ delay: 0.1 }}
+                className="mb-8 flex items-center gap-3"
+              >
+                <div className="flex items-center gap-2 rounded-full border border-border px-4 py-2">
+                  <span className="relative flex size-[12px] items-center justify-center">
+                    <span className="size-[4px] rounded-full bg-success" />
+                  </span>
+                  <span className="text-[14px] tracking-wide text-text-secondary">
+                    {t("available")}
+                  </span>
+                </div>
+              </motion.div>
+            )}
 
             {/* Bio text - loaded from DB in future */}
             <motion.p
@@ -87,7 +90,7 @@ export function AboutSection({ onContactOpen }: Props) {
                 onClick={onContactOpen}
                 className="mt-4 rounded-full border border-border px-6 py-2.5 text-[14px] text-text-secondary transition-all hover:border-text-secondary hover:text-text-primary"
               >
-                Send me message
+                {t("sendMessage")}
               </motion.button>
             )}
 

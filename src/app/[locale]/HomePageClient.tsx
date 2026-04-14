@@ -35,7 +35,7 @@ export function HomePageClient({ social, cvUrl, available }: Props) {
           available={available}
         />
         <ProjectsSection />
-        <AboutSection onContactOpen={() => setContactOpen(true)} />
+        <AboutSection onContactOpen={() => setContactOpen(true)} available={available} />
         <SkillsSection />
       </main>
       <Footer

@@ -12,10 +12,14 @@
     "menu": "menú"
   },
   "hero": {
+    "hello": "hola",
     "greeting": "Soy",
     "name": "Matheus Batista",
     "role": "un ingeniero de software basado en Brasil",
-    "available": "Disponible para oportunidades",
+    "availableFor": "Disponible para",
+    "roles": "vacantes",
+    "and": "y",
+    "projects": "proyectos",
     "scroll": "scroll"
   },
   "projects": {
@@ -24,13 +28,16 @@
     "viewProject": "Ver proyecto",
     "visitSite": "Visitar sitio",
     "viewCode": "Ver código",
-    "techStack": "Tecnologías"
+    "techStack": "Tecnologías",
+    "featured": "Destacado",
+    "placeholder": "Thumbnails de proyectos de la base de datos"
   },
   "about": {
     "sectionTitle": "SOBRE MÍ",
     "available": "Disponible Para Trabajar",
     "greeting": "¡hola!",
-    "decorativeText": "ingeniero de software"
+    "decorativeText": "ingeniero de software",
+    "sendMessage": "Envíame un mensaje"
   },
   "skills": {
     "sectionTitle": "MIS HABILIDADES",
@@ -41,26 +48,29 @@
     "tools": "Herramientas"
   },
   "contact": {
-    "sectionTitle": "CONTACTO",
-    "cta": "Hablemos sobre tu PROYECTO",
+    "windowTitle": "Nuevo mensaje",
     "form": {
-      "name": "Nombre",
-      "email": "Correo",
-      "subject": "Asunto",
-      "message": "Mensaje",
-      "send": "Enviar mensaje",
+      "emailLabel": "Email:",
+      "emailPlaceholder": "Ingresa tu correo electrónico",
+      "nameLabel": "Nombre:",
+      "namePlaceholder": "Ingresa tu nombre",
+      "subjectLabel": "Asunto:",
+      "subjectPlaceholder": "Cualquier asunto...",
+      "messagePlaceholder": "Escribe tu mensaje aquí",
+      "send": "Enviar",
       "sending": "Enviando..."
     },
     "modal": {
       "sentTitle": "¡Mensaje enviado!",
-      "sentDescription": "Gracias por contactarme. Responderé pronto.",
-      "errorTitle": "Error al enviar",
-      "errorDescription": "Algo salió mal. Inténtalo de nuevo más tarde.",
-      "close": "Cerrar"
+      "sentDescription": "Gracias por tomarte el tiempo de escribirme.\nTe responderé lo antes posible.",
+      "errorTitle": "Mensaje no enviado :(",
+      "errorDescription": "Ocurrió un error al enviar tu mensaje. Inténtalo de nuevo más tarde.\nO intenta contactarme por otro método.",
+      "socialNote": "Mientras tanto, encuéntrame en mis redes sociales"
     }
   },
   "footer": {
-    "cta": "Hablemos sobre tu PROYECTO",
+    "ctaLine1": "HABLEMOS SOBRE TU",
+    "ctaLine2": "PROYECTO",
     "available": "disponible para oportunidades",
     "downloadCv": "descargar CV",
     "copyright": "Copyright © 2025 Matheus dos Santos Batista | Todos los derechos reservados."

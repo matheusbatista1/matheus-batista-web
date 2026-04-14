@@ -48,7 +48,7 @@ export function HeroSection({ github, linkedin, email, cvUrl, available = true }
           className="mb-1 flex items-baseline gap-2"
         >
           <span className="font-handwriting text-[36px] text-text-tertiary/50 md:text-[48px]">
-            hello
+            {t("hello")}
           </span>
           <span className="text-[28px] font-extralight tracking-[-0.96px] text-text-tertiary/40 md:text-[48px]">
             {t("greeting")}
@@ -94,7 +94,7 @@ export function HeroSection({ github, linkedin, email, cvUrl, available = true }
               <span className="relative inline-flex size-[12px] rounded-full bg-success" />
             </span>
             <span className="text-[13px] tracking-[0.5px] text-text-secondary">
-              Available for <strong className="font-semibold text-text-primary">roles</strong> and <strong className="font-semibold text-text-primary">projects</strong>.
+              {t("availableFor")} <strong className="font-semibold text-text-primary">{t("roles")}</strong> {t("and")} <strong className="font-semibold text-text-primary">{t("projects")}</strong>.
             </span>
           </motion.div>
         )}

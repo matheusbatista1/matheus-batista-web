@@ -46,9 +46,9 @@ export function Footer({ github, linkedin, behance, email, cvUrl, available = tr
           className="mb-10 text-center"
         >
           <h2 className="text-[40px] font-bold uppercase leading-[1.1] text-text-primary md:text-[72px] lg:text-[100px] lg:leading-[1.05]">
-            LET&apos;S TALK YOUR
+            {t("ctaLine1")}
             <br />
-            <span className="text-text-tertiary">PROJECT</span>
+            <span className="text-text-tertiary">{t("ctaLine2")}</span>
           </h2>
         </motion.div>
 

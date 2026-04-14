@@ -12,10 +12,14 @@
     "menu": "menu"
   },
   "hero": {
+    "hello": "hello",
     "greeting": "I'm",
     "name": "Matheus Batista",
     "role": "a software engineer based in Brazil",
-    "available": "Available for opportunities",
+    "availableFor": "Available for",
+    "roles": "roles",
+    "and": "and",
+    "projects": "projects",
     "scroll": "scroll"
   },
   "projects": {
@@ -24,13 +28,16 @@
     "viewProject": "View project",
     "visitSite": "Visit site",
     "viewCode": "View code",
-    "techStack": "Tech Stack"
+    "techStack": "Tech Stack",
+    "featured": "Featured",
+    "placeholder": "Project thumbnails from database"
   },
   "about": {
     "sectionTitle": "ABOUT ME",
     "available": "Available To Work",
     "greeting": "hi!",
-    "decorativeText": "software engineer"
+    "decorativeText": "software engineer",
+    "sendMessage": "Send me message"
   },
   "skills": {
     "sectionTitle": "MY TECH SKILLS",
@@ -41,26 +48,29 @@
     "tools": "Tools"
   },
   "contact": {
-    "sectionTitle": "CONTACT",
-    "cta": "Let's talk about your PROJECT",
+    "windowTitle": "New message",
     "form": {
-      "name": "Name",
-      "email": "Email",
-      "subject": "Subject",
-      "message": "Message",
-      "send": "Send message",
+      "emailLabel": "Email:",
+      "emailPlaceholder": "Enter your email address",
+      "nameLabel": "Name:",
+      "namePlaceholder": "Enter your name",
+      "subjectLabel": "Subject:",
+      "subjectPlaceholder": "Any subject...",
+      "messagePlaceholder": "Write your message here",
+      "send": "Send",
       "sending": "Sending..."
     },
     "modal": {
-      "sentTitle": "Message sent!",
-      "sentDescription": "Thank you for reaching out. I'll get back to you soon.",
-      "errorTitle": "Failed to send",
-      "errorDescription": "Something went wrong. Please try again later.",
-      "close": "Close"
+      "sentTitle": "Message Sent!",
+      "sentDescription": "Thank you for taking the time to write to me.\nI will get back to you as soon as possible.",
+      "errorTitle": "Message not send :(",
+      "errorDescription": "An error occurred while sending your message. Please try again later.\nOr, try contacting me using another method.",
+      "socialNote": "At the same time, find me on my social networks"
     }
   },
   "footer": {
-    "cta": "Let's talk about your PROJECT",
+    "ctaLine1": "LET'S TALK YOUR",
+    "ctaLine2": "PROJECT",
     "available": "available for opportunities",
     "downloadCv": "download CV",
     "copyright": "Copyright © 2025 Matheus dos Santos Batista | All rights reserved."
