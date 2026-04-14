@@ -9,6 +9,13 @@ function loadMessages(locale: string) {
   return JSON.parse(fs.readFileSync(filePath, "utf-8"));
 }
 
+function getNestedValue(obj: Record<string, unknown>, path: string): unknown {
+  return path.split(".").reduce<unknown>(
+    (acc, key) => (acc && typeof acc === "object") ? (acc as Record<string, unknown>)[key] : undefined,
+    obj,
+  );
+}
+
 function getKeys(obj: Record<string, unknown>, prefix = ""): string[] {
   return Object.entries(obj).flatMap(([key, value]) => {
     const fullKey = prefix ? `${prefix}.${key}` : key;
@@ -38,7 +45,7 @@ describe("Translation files consistency", () => {
 
   it("should not have empty values in PT", () => {
     const emptyKeys = ptKeys.filter((key) => {
-      const value = key.split(".").reduce((obj: any, k) => obj?.[k], pt);
+      const value = getNestedValue(pt, key);
       return typeof value === "string" && value.trim() === "";
     });
     expect(emptyKeys).toEqual([]);
@@ -46,7 +53,7 @@ describe("Translation files consistency", () => {
 
   it("should not have empty values in EN", () => {
     const emptyKeys = enKeys.filter((key) => {
-      const value = key.split(".").reduce((obj: any, k) => obj?.[k], en);
+      const value = getNestedValue(en, key);
       return typeof value === "string" && value.trim() === "";
     });
     expect(emptyKeys).toEqual([]);
@@ -54,7 +61,7 @@ describe("Translation files consistency", () => {
 
   it("should not have empty values in ES", () => {
     const emptyKeys = esKeys.filter((key) => {
-      const value = key.split(".").reduce((obj: any, k) => obj?.[k], es);
+      const value = getNestedValue(es, key);
       return typeof value === "string" && value.trim() === "";
     });
     expect(emptyKeys).toEqual([]);

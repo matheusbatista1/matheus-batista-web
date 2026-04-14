@@ -53,6 +53,17 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
               },
             });
           }
+
+          // Atualizar foto e nome do perfil OAuth
+          if (user.image || user.name) {
+            await prisma.user.update({
+              where: { id: existingUser.id },
+              data: {
+                ...(user.image && { image: user.image }),
+                ...(user.name && !existingUser.name && { name: user.name }),
+              },
+            });
+          }
         }
       }
 

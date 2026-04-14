@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { signOut } from "next-auth/react";
+import Image from "next/image";
+import { MbLogo } from "@/components/portfolio/MbLogo";
 import {
   LayoutDashboard,
   FolderOpen,
@@ -39,11 +41,11 @@ export function AdminSidebar({ user }: Props) {
   return (
     <aside className="flex h-full w-[240px] flex-shrink-0 flex-col border-r border-white/5 bg-[#111]">
       {/* Logo */}
-      <div className="flex h-[64px] items-center px-6">
-        <Link href="/admin" className="text-[20px] font-light text-[#d9d9d9]">
-          LOGO
+      <div className="flex h-[64px] items-center gap-2 px-6">
+        <Link href="/admin" className="flex items-center">
+          <MbLogo className="h-[32px] w-auto" />
         </Link>
-        <span className="ml-2 rounded bg-white/10 px-1.5 py-0.5 text-[10px] text-[#6e6e73]">
+        <span className="rounded bg-white/10 px-1.5 py-0.5 text-[10px] text-[#6e6e73]">
           admin
         </span>
       </div>
@@ -73,9 +75,11 @@ export function AdminSidebar({ user }: Props) {
       <div className="border-t border-white/5 p-4">
         <div className="mb-3 flex items-center gap-3">
           {user.image ? (
-            <img
+            <Image
               src={user.image}
               alt=""
+              width={32}
+              height={32}
               className="size-8 rounded-full"
             />
           ) : (

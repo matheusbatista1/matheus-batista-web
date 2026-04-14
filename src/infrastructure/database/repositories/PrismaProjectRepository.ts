@@ -4,7 +4,6 @@ import type {
   ListProjectsParams,
 } from "@/domain/repositories";
 import type { Project } from "@/domain/entities";
-import type { Locale } from "@/domain/enums";
 
 export class PrismaProjectRepository implements IProjectRepository {
   constructor(private readonly db: PrismaClient) {}

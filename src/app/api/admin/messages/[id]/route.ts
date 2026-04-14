@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { requireAdmin } from "@/lib/adminAuth";
-import { makeMarkMessageRead, getContactMessageRepository } from "@/infrastructure/container";
+import { getContactMessageRepository } from "@/infrastructure/container";
 import { ContactStatus } from "@/domain/enums";
 
 export async function GET(

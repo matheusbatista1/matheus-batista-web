@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import { MbLogo } from "./MbLogo";
 
 export function LoadingScreen() {
   return (
@@ -9,16 +10,15 @@ export function LoadingScreen() {
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5 }}
-        className="flex flex-col items-center gap-4"
+        className="flex flex-col items-center gap-6"
       >
-        <motion.span
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.6 }}
-          className="text-[200px] font-bold leading-none text-text-primary md:text-[300px]"
         >
-          mb
-        </motion.span>
+          <MbLogo className="h-[200px] w-auto text-text-primary md:h-[300px]" />
+        </motion.div>
         <motion.span
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}

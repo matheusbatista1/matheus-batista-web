@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "motion/react";
 import { ArrowUpRight, ChevronLeft, ChevronRight, X } from "lucide-react";
@@ -70,10 +71,11 @@ export function ProjectModal({
               {/* Thumbnail */}
               <div className="relative h-[200px] w-full bg-bg-secondary md:h-auto md:w-1/2">
                 {project.thumbnailUrl ? (
-                  <img
+                  <Image
                     src={project.thumbnailUrl}
                     alt={project.title}
-                    className="size-full object-cover"
+                    fill
+                    className="object-cover"
                   />
                 ) : (
                   <div className="flex size-full items-center justify-center text-text-tertiary">

@@ -5,6 +5,7 @@ import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { Mail } from "lucide-react";
 import { ErrorModal } from "@/components/ui/ErrorModal";
+import { MbLogo } from "@/components/portfolio/MbLogo";
 
 type ErrorType =
   | "access-denied"
@@ -108,9 +109,9 @@ function LoginContent() {
     <>
       <div className="w-full max-w-sm">
         {/* Logo */}
-        <div className="mb-12 text-center">
-          <h1 className="text-[48px] font-light capitalize text-[#d9d9d9]">LOGO</h1>
-          <p className="mt-2 text-[14px] text-[#6e6e73]">Admin Panel</p>
+        <div className="mb-12 flex flex-col items-center">
+          <MbLogo className="h-[60px] w-auto" />
+          <p className="mt-3 text-[14px] text-[#6e6e73]">Admin Panel</p>
         </div>
 
         <div className="rounded-2xl bg-[#1c1c1e] p-8">

@@ -18,7 +18,7 @@ type Props = {
   bio?: string;
 };
 
-export function HomePageClient({ social, cvUrl, available, bio }: Props) {
+export function HomePageClient({ social, available, bio }: Props) {
   const [contactOpen, setContactOpen] = useState(false);
   const locale = useLocale();
 

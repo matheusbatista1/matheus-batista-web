@@ -6,6 +6,7 @@ import { LanguageSelector } from "./LanguageSelector";
 import { ThemeToggle } from "./ThemeToggle";
 import { MenuOverlay } from "./MenuOverlay";
 import { motion } from "motion/react";
+import { MbLogo } from "../portfolio/MbLogo";
 
 type Props = {
   onContactOpen?: () => void;
@@ -44,9 +45,7 @@ export function Header({ onContactOpen }: Props) {
 
           {/* Center: Logo */}
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-            <span className="text-[48px] font-light capitalize text-[#d9d9d9]">
-              LOGO
-            </span>
+            <MbLogo className="h-[52px] w-auto" />
           </div>
 
           {/* Right: Theme Toggle | Menu */}

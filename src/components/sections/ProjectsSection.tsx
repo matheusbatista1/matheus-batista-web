@@ -9,7 +9,7 @@ export function ProjectsSection() {
   const t = useTranslations("projects");
 
   return (
-    <section id="projects" className="relative bg-bg-primary py-12">
+    <section id="projects" className="relative bg-bg-projects py-12">
       {/* Infinite Marquee */}
       <InfiniteMarquee text={t("marquee")} className="mb-16" />
 

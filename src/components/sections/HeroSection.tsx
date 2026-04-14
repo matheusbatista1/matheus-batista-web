@@ -2,6 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { motion } from "motion/react";
+import Image from "next/image";
 import { SocialLinks } from "../portfolio/SocialLinks";
 import { PageIndicator } from "../portfolio/PageIndicator";
 
@@ -19,15 +20,13 @@ export function HeroSection({ github, linkedin, email, cvUrl, available = true }
   return (
     <section
       id="hero"
-      className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-bg-primary"
+      className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-bg-hero"
     >
-      {/* God ray / gradient background */}
+      {/* God ray / gradient background com tons de #404040 */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        {/* Top radial glow */}
-        <div className="absolute left-1/2 top-[-30%] h-[80%] w-[120%] -translate-x-1/2 rounded-[50%] bg-gradient-to-b from-white/[0.03] to-transparent blur-[80px]" />
-        {/* Bottom gradient bar */}
-        <div className="absolute bottom-[15%] left-1/2 h-[160px] w-[80%] -translate-x-1/2 bg-gradient-to-t from-white/[0.04] to-transparent blur-[120px]" />
-        <div className="absolute bottom-[12%] left-1/2 h-[316px] w-[75%] -translate-x-1/2 bg-gradient-to-t from-[#393939]/20 to-transparent blur-[200px]" />
+        <div className="absolute left-1/2 top-[-30%] h-[80%] w-[120%] -translate-x-1/2 rounded-[50%] bg-gradient-to-b from-[#404040]/[0.08] to-transparent blur-[80px]" />
+        <div className="absolute bottom-[15%] left-1/2 h-[160px] w-[80%] -translate-x-1/2 bg-gradient-to-t from-[#404040]/[0.06] to-transparent blur-[120px]" />
+        <div className="absolute bottom-[12%] left-1/2 h-[316px] w-[75%] -translate-x-1/2 bg-gradient-to-t from-[#404040]/20 to-transparent blur-[200px]" />
       </div>
 
       {/* Page indicator - left side */}
@@ -38,56 +37,65 @@ export function HeroSection({ github, linkedin, email, cvUrl, available = true }
         <SocialLinks direction="vertical" github={github} linkedin={linkedin} email={email} cvUrl={cvUrl} />
       </div>
 
-      {/* Main content */}
-      <div className="relative z-10 flex flex-col items-center px-6 text-center">
-        {/* "hello" handwritten + "I'm" */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="mb-1 flex items-baseline gap-2"
-        >
-          <span className="font-handwriting text-[36px] text-text-tertiary/50 md:text-[48px]">
-            {t("hello")}
-          </span>
-          <span className="text-[28px] font-extralight tracking-[-0.96px] text-text-tertiary/40 md:text-[48px]">
-            {t("greeting")}
-          </span>
-        </motion.div>
+      {/* Main content - bloco centralizado na pagina, texto alinhado a esquerda */}
+      <div className="relative z-10 flex flex-col items-center px-6">
+        <div className="flex flex-col items-start">
+          {/* "hello" handwritten (sempre ingles) + "I'm" */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="mb-1 flex items-baseline gap-3"
+          >
+            <Image
+              src="/images/hello.png"
+              alt="hello"
+              width={150}
+              height={48}
+              className="relative top-[2px] h-[36px] w-auto md:h-[46px]"
+              priority
+            />
+            <span className="text-[22px] font-extralight tracking-[-0.96px] text-[#8c8c8c]/50 md:text-[38px]">
+              {t("greeting")}
+            </span>
+          </motion.div>
 
-        {/* MATHEUS BATISTA */}
-        <motion.h1
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            duration: 0.8,
-            delay: 0.5,
-            type: "spring",
-            stiffness: 80,
-            damping: 20,
-          }}
-          className="text-[56px] font-bold uppercase leading-[0.86] tracking-[-1.5px] text-text-primary sm:text-[80px] md:text-[110px] lg:text-[140px] lg:tracking-[-2.8px]"
-        >
-          {t("name")}
-        </motion.h1>
+          {/* MATHEUS BATISTA - duas linhas, preto com contorno cinza */}
+          <motion.h1
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.8,
+              delay: 0.5,
+              type: "spring",
+              stiffness: 80,
+              damping: 20,
+            }}
+            className="hero-text-outline text-[48px] font-bold uppercase leading-[0.86] tracking-[-1.5px] text-black sm:text-[68px] md:text-[90px] lg:text-[120px] lg:tracking-[-2.4px]"
+          >
+            MATHEUS
+            <br />
+            BATISTA
+          </motion.h1>
 
-        {/* a software engineer based in Brazil */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.7 }}
-          className="mt-4 text-[20px] font-extralight tracking-[-0.5px] text-text-tertiary/40 md:mt-6 md:text-[36px] lg:text-[48px] lg:tracking-[-0.96px]"
-        >
-          {t("role")}
-        </motion.p>
+          {/* a software engineer based in Brazil */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.7 }}
+            className="mt-4 text-[16px] font-extralight tracking-[-0.5px] text-[#8c8c8c]/50 md:mt-6 md:text-[28px] lg:text-[36px] lg:tracking-[-0.72px]"
+          >
+            {t("role")}
+          </motion.p>
+        </div>
 
-        {/* Available tag */}
+        {/* Available tag - centralizado */}
         {available && (
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 1.0 }}
-            className="mt-20 flex items-center gap-2.5 md:mt-28"
+            className="mt-[110px] flex items-center gap-2.5 md:mt-[140px]"
           >
             <span className="relative flex size-[24px] items-center justify-center">
               <span className="absolute inline-flex size-[12px] animate-ping rounded-full bg-success opacity-40" />
