@@ -7,6 +7,7 @@ import {
   LayoutDashboard,
   FolderOpen,
   MessageSquare,
+  FileText,
   Settings,
   LogOut,
 } from "lucide-react";
@@ -23,6 +24,7 @@ const navItems = [
   { href: "/admin", label: "Dashboard", icon: LayoutDashboard },
   { href: "/admin/projects", label: "Projects", icon: FolderOpen },
   { href: "/admin/messages", label: "Messages", icon: MessageSquare },
+  { href: "/admin/resume", label: "Resume / CV", icon: FileText },
   { href: "/admin/settings", label: "Settings", icon: Settings },
 ];
 
