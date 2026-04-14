@@ -7,7 +7,11 @@ import { ThemeToggle } from "./ThemeToggle";
 import { MenuOverlay } from "./MenuOverlay";
 import { motion } from "motion/react";
 
-export function Header() {
+type Props = {
+  onContactOpen?: () => void;
+};
+
+export function Header({ onContactOpen }: Props) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const t = useTranslations("nav");
@@ -71,7 +75,7 @@ export function Header() {
         </nav>
       </motion.header>
 
-      <MenuOverlay isOpen={menuOpen} onClose={() => setMenuOpen(false)} />
+      <MenuOverlay isOpen={menuOpen} onClose={() => setMenuOpen(false)} onContactOpen={onContactOpen} />
     </>
   );
 }

@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "motion/react";
 type Props = {
   isOpen: boolean;
   onClose: () => void;
+  onContactOpen?: () => void;
 };
 
 const menuItems = [
@@ -13,25 +14,32 @@ const menuItems = [
   { key: "projects", href: "#projects" },
   { key: "skills", href: "#skills" },
   { key: "about", href: "#about" },
-  { key: "contact", href: "#contact" },
+  { key: "contact", href: null },
 ] as const;
 
-export function MenuOverlay({ isOpen, onClose }: Props) {
+export function MenuOverlay({ isOpen, onClose, onContactOpen }: Props) {
   const t = useTranslations("nav");
 
-  function handleNavClick(href: string) {
+  function handleNavClick(key: string, href: string | null) {
     onClose();
-    setTimeout(() => {
-      const el = document.querySelector(href);
-      if (el) el.scrollIntoView({ behavior: "smooth" });
-    }, 300);
+
+    if (key === "contact" && onContactOpen) {
+      setTimeout(() => onContactOpen(), 350);
+      return;
+    }
+
+    if (href) {
+      setTimeout(() => {
+        const el = document.querySelector(href);
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+      }, 300);
+    }
   }
 
   return (
     <AnimatePresence>
       {isOpen && (
         <>
-          {/* Left blur panel */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -41,7 +49,6 @@ export function MenuOverlay({ isOpen, onClose }: Props) {
             onClick={onClose}
           />
 
-          {/* Right menu panel */}
           <motion.div
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
@@ -49,7 +56,6 @@ export function MenuOverlay({ isOpen, onClose }: Props) {
             transition={{ type: "spring", damping: 30, stiffness: 250 }}
             className="fixed inset-y-0 right-0 z-[70] w-full bg-bg-secondary/95 backdrop-blur-3xl md:w-[55%]"
           >
-            {/* Close button */}
             <motion.button
               type="button"
               initial={{ opacity: 0 }}
@@ -65,7 +71,6 @@ export function MenuOverlay({ isOpen, onClose }: Props) {
               </svg>
             </motion.button>
 
-            {/* Navigation links */}
             <nav className="flex h-full flex-col justify-center gap-2 px-16 md:px-24">
               {menuItems.map((item, i) => (
                 <motion.button
@@ -80,7 +85,7 @@ export function MenuOverlay({ isOpen, onClose }: Props) {
                     stiffness: 200,
                     damping: 25,
                   }}
-                  onClick={() => handleNavClick(item.href)}
+                  onClick={() => handleNavClick(item.key, item.href)}
                   className="text-left text-[48px] font-light capitalize text-[#8c8c8c] transition-colors hover:text-text-primary md:text-[64px] lg:text-[75px]"
                 >
                   {t(item.key)}
@@ -88,7 +93,6 @@ export function MenuOverlay({ isOpen, onClose }: Props) {
               ))}
             </nav>
 
-            {/* Decorative line at top */}
             <motion.div
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}

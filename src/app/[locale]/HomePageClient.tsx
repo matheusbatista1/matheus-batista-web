@@ -26,7 +26,7 @@ export function HomePageClient({ social, cvUrl, available, bio }: Props) {
 
   return (
     <>
-      <Header />
+      <Header onContactOpen={() => setContactOpen(true)} />
       <main className="relative z-10 flex-1">
         <HeroSection
           github={social.github}
