@@ -3,6 +3,7 @@
 import { useTranslations } from "next-intl";
 import { motion } from "motion/react";
 import { SocialLinks } from "../portfolio/SocialLinks";
+import { PageIndicator } from "../portfolio/PageIndicator";
 
 export function HeroSection() {
   const t = useTranslations("hero");
@@ -10,60 +11,64 @@ export function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative flex min-h-screen items-center justify-center overflow-hidden bg-bg-primary"
+      className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-bg-primary"
     >
-      {/* Background gradient effects */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute bottom-0 left-1/2 h-[316px] w-[1450px] -translate-x-1/2 bg-gradient-to-b from-[#565656] to-white opacity-[0.08] blur-[200px]" />
-        <div className="absolute bottom-0 left-1/2 h-[200px] w-[1450px] -translate-x-1/2 bg-gradient-to-b from-[#393939] to-[#4c4c4c] opacity-[0.12] blur-[200px]" />
+      {/* God ray / gradient background */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        {/* Top radial glow */}
+        <div className="absolute left-1/2 top-[-30%] h-[80%] w-[120%] -translate-x-1/2 rounded-[50%] bg-gradient-to-b from-white/[0.03] to-transparent blur-[80px]" />
+        {/* Bottom gradient bar */}
+        <div className="absolute bottom-[15%] left-1/2 h-[160px] w-[80%] -translate-x-1/2 bg-gradient-to-t from-white/[0.04] to-transparent blur-[120px]" />
+        <div className="absolute bottom-[12%] left-1/2 h-[316px] w-[75%] -translate-x-1/2 bg-gradient-to-t from-[#393939]/20 to-transparent blur-[200px]" />
       </div>
+
+      {/* Page indicator - left side */}
+      <PageIndicator />
 
       {/* Social links - right side */}
-      <div className="absolute right-10 top-1/2 z-10 hidden -translate-y-1/2 lg:block">
+      <div className="fixed right-10 top-1/2 z-40 hidden -translate-y-1/2 xl:block">
         <SocialLinks direction="vertical" />
-      </div>
-
-      {/* Page navigation dots - left side */}
-      <div className="absolute left-10 top-1/2 z-10 hidden -translate-y-1/2 flex-col items-center gap-2 lg:flex">
-        <span className="h-[3px] w-9 rounded-full bg-text-primary" />
-        <span className="h-[3px] w-6 rounded-full bg-text-tertiary/40" />
-        <span className="h-[3px] w-6 rounded-full bg-text-tertiary/40" />
-        <span className="h-[3px] w-6 rounded-full bg-text-tertiary/40" />
       </div>
 
       {/* Main content */}
       <div className="relative z-10 flex flex-col items-center px-6 text-center">
-        {/* "hello" + "I'm" */}
+        {/* "hello" handwritten + "I'm" */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex items-baseline gap-3"
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="mb-1 flex items-baseline gap-2"
         >
-          <span className="font-serif text-4xl italic text-text-tertiary/60 md:text-5xl">
+          <span className="font-handwriting text-[36px] text-text-tertiary/50 md:text-[48px]">
             hello
           </span>
-          <span className="text-3xl font-extralight tracking-tight text-text-tertiary/40 md:text-5xl">
+          <span className="text-[28px] font-extralight tracking-[-0.96px] text-text-tertiary/40 md:text-[48px]">
             {t("greeting")}
           </span>
         </motion.div>
 
-        {/* Name */}
+        {/* MATHEUS BATISTA */}
         <motion.h1
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.4, type: "spring", stiffness: 100 }}
-          className="mt-2 text-7xl font-bold uppercase leading-[0.86] tracking-[-2.8px] text-text-primary sm:text-8xl md:text-[140px]"
+          transition={{
+            duration: 0.8,
+            delay: 0.5,
+            type: "spring",
+            stiffness: 80,
+            damping: 20,
+          }}
+          className="text-[56px] font-bold uppercase leading-[0.86] tracking-[-1.5px] text-text-primary sm:text-[80px] md:text-[110px] lg:text-[140px] lg:tracking-[-2.8px]"
         >
           {t("name")}
         </motion.h1>
 
-        {/* Role */}
+        {/* a software engineer based in Brazil */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="mt-6 text-2xl font-extralight tracking-tight text-text-tertiary/40 md:text-5xl md:tracking-[-0.96px]"
+          transition={{ duration: 0.6, delay: 0.7 }}
+          className="mt-4 text-[20px] font-extralight tracking-[-0.5px] text-text-tertiary/40 md:mt-6 md:text-[36px] lg:text-[48px] lg:tracking-[-0.96px]"
         >
           {t("role")}
         </motion.p>
@@ -72,28 +77,28 @@ export function HeroSection() {
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 0.8 }}
-          className="mt-16 flex items-center gap-3"
+          transition={{ duration: 0.5, delay: 1.0 }}
+          className="mt-20 flex items-center gap-2.5 md:mt-28"
         >
-          <span className="relative flex size-3">
-            <span className="absolute inline-flex size-full animate-ping rounded-full bg-success opacity-75" />
-            <span className="relative inline-flex size-3 rounded-full bg-success" />
+          <span className="relative flex size-[24px] items-center justify-center">
+            <span className="absolute inline-flex size-[12px] animate-ping rounded-full bg-success opacity-40" />
+            <span className="relative inline-flex size-[12px] rounded-full bg-success" />
           </span>
-          <span className="text-sm tracking-wide text-text-secondary">
+          <span className="text-[13px] tracking-[0.5px] text-text-secondary">
             {t("available")}
           </span>
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* Scroll indicator - bottom left */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.2 }}
-        className="absolute bottom-10 left-10 hidden items-end gap-10 lg:flex"
+        transition={{ delay: 1.4 }}
+        className="absolute bottom-12 left-10 hidden xl:flex"
       >
-        <div className="flex flex-col items-center gap-3">
-          <span className="-rotate-90 text-xs uppercase tracking-[0.56px] text-text-tertiary">
+        <div className="flex flex-col items-center gap-4">
+          <span className="-rotate-90 text-[14px] uppercase tracking-[0.56px] text-[#7e7e7e]">
             {t("scroll")}
           </span>
           <svg
@@ -101,10 +106,10 @@ export function HeroSection() {
             height="15"
             viewBox="0 0 11 15"
             fill="none"
-            className="rotate-90 text-text-tertiary"
+            className="mt-4 animate-bounce text-[#7e7e7e]"
           >
             <path
-              d="M1 7.5L5.5 12L10 7.5M5.5 0V12"
+              d="M5.5 0V12M1 7.5L5.5 12L10 7.5"
               stroke="currentColor"
               strokeWidth="1"
             />
@@ -113,7 +118,7 @@ export function HeroSection() {
       </motion.div>
 
       {/* Mobile social links */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 lg:hidden">
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 xl:hidden">
         <SocialLinks direction="horizontal" />
       </div>
     </section>

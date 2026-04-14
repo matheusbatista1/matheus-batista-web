@@ -84,6 +84,7 @@
   --color-modal-backdrop: var(--color-modal-backdrop);
 
   --font-sans: var(--font-poppins);
+  --font-handwriting: var(--font-caveat);
 }
 
 /* ─── Base Styles ─── */

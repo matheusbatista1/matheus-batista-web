@@ -2,7 +2,6 @@
 
 import { useLocale } from "next-intl";
 import { useRouter, usePathname } from "@/i18n/routing";
-import { cn } from "@/lib/utils";
 
 const locales = [
   { code: "pt", label: "PT" },
@@ -20,22 +19,22 @@ export function LanguageSelector() {
   }
 
   return (
-    <div className="flex items-center gap-4">
+    <div className="flex items-center gap-[17px]">
       {locales.map((locale, index) => (
-        <div key={locale.code} className="flex items-center gap-4">
+        <div key={locale.code} className="flex items-center gap-[17px]">
           <button
+            type="button"
             onClick={() => handleLocaleChange(locale.code)}
-            className={cn(
-              "text-xl uppercase tracking-[0.8px] transition-colors",
+            className={`text-[20px] font-normal uppercase leading-[1.75] tracking-[0.8px] transition-colors ${
               currentLocale === locale.code
                 ? "text-text-primary"
-                : "text-text-tertiary hover:text-text-secondary",
-            )}
+                : "text-[#8c8c8c] hover:text-text-secondary"
+            }`}
           >
             {locale.label}
           </button>
           {index < locales.length - 1 && (
-            <span className="size-[5px] rounded-full bg-text-tertiary" />
+            <span className="size-[5px] rounded-full bg-[#8c8c8c]" />
           )}
         </div>
       ))}
