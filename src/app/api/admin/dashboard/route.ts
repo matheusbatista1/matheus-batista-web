@@ -1,8 +1,12 @@
+import { NextResponse } from "next/server";
+import { requireAdmin } from "@/lib/adminAuth";
 import { getProjectRepository, getContactMessageRepository } from "@/infrastructure/container";
 import { ContactStatus } from "@/domain/enums";
-import { DashboardClient } from "./DashboardClient";
 
-export default async function AdminDashboard() {
+export async function GET() {
+  const { error } = await requireAdmin();
+  if (error) return error;
+
   const projectRepo = getProjectRepository();
   const messageRepo = getContactMessageRepository();
 
@@ -15,18 +19,21 @@ export default async function AdminDashboard() {
       messageRepo.findAll({ limit: 5 }),
     ]);
 
-  const initialData = {
-    stats: { projectCount, publishedCount, totalMessages, unreadMessages },
+  return NextResponse.json({
+    stats: {
+      projectCount,
+      publishedCount,
+      totalMessages,
+      unreadMessages,
+    },
     recentMessages: recentMessages.map((msg) => ({
       id: msg.id,
       name: msg.name,
       email: msg.email,
       subject: msg.subject,
       message: msg.message,
-      status: msg.status as string,
+      status: msg.status,
       createdAt: new Date(msg.createdAt).toISOString(),
     })),
-  };
-
-  return <DashboardClient initialData={initialData} />;
+  });
 }
