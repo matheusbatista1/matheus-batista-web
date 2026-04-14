@@ -23,37 +23,61 @@ type SocialItem = {
   icon: (props: { size?: number }) => ReactNode;
   href: string;
   label: string;
+  show: boolean;
 };
 
 type Props = {
   direction?: "vertical" | "horizontal";
   className?: string;
+  github?: string;
+  linkedin?: string;
+  email?: string;
+  cvUrl?: string;
 };
 
-export function SocialLinks({ direction = "vertical", className }: Props) {
+export function SocialLinks({
+  direction = "vertical",
+  className,
+  github = "",
+  linkedin = "",
+  email = "",
+  cvUrl,
+}: Props) {
   const links: SocialItem[] = [
-    { icon: GithubIcon, href: "https://github.com/matheusbatista1", label: "GitHub" },
-    { icon: LinkedinIcon, href: "#", label: "LinkedIn" },
-    { icon: ({ size }) => <Mail size={size} strokeWidth={1.5} />, href: "mailto:matheusbatista.tech@gmail.com", label: "Email" },
-    { icon: ({ size }) => <Download size={size} strokeWidth={1.5} />, href: "#", label: "Download CV" },
+    { icon: GithubIcon, href: github, label: "GitHub", show: !!github },
+    { icon: LinkedinIcon, href: linkedin, label: "LinkedIn", show: !!linkedin },
+    {
+      icon: ({ size }) => <Mail size={size} strokeWidth={1.5} />,
+      href: email ? `mailto:${email}` : "#",
+      label: "Email",
+      show: !!email,
+    },
+    {
+      icon: ({ size }) => <Download size={size} strokeWidth={1.5} />,
+      href: cvUrl ?? "#",
+      label: "Download CV",
+      show: true,
+    },
   ];
 
   return (
     <div
       className={`flex ${direction === "vertical" ? "flex-col" : "flex-row"} gap-8 ${className ?? ""}`}
     >
-      {links.map((link) => (
-        <a
-          key={link.label}
-          href={link.href}
-          target={link.href.startsWith("http") ? "_blank" : undefined}
-          rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
-          className="text-text-tertiary hover:text-text-primary transition-colors duration-200"
-          aria-label={link.label}
-        >
-          {link.icon({ size: 22 })}
-        </a>
-      ))}
+      {links
+        .filter((l) => l.show)
+        .map((link) => (
+          <a
+            key={link.label}
+            href={link.href}
+            target={link.href.startsWith("http") ? "_blank" : undefined}
+            rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
+            className="text-text-tertiary hover:text-text-primary transition-colors duration-200"
+            aria-label={link.label}
+          >
+            {link.icon({ size: 22 })}
+          </a>
+        ))}
     </div>
   );
 }

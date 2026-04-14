@@ -5,7 +5,14 @@ import { motion } from "motion/react";
 import { SocialLinks } from "../portfolio/SocialLinks";
 import { PageIndicator } from "../portfolio/PageIndicator";
 
-export function HeroSection() {
+type Props = {
+  github?: string;
+  linkedin?: string;
+  email?: string;
+  cvUrl?: string;
+};
+
+export function HeroSection({ github, linkedin, email, cvUrl }: Props) {
   const t = useTranslations("hero");
 
   return (
@@ -27,7 +34,7 @@ export function HeroSection() {
 
       {/* Social links - right side */}
       <div className="fixed right-10 top-1/2 z-40 hidden -translate-y-1/2 xl:block">
-        <SocialLinks direction="vertical" />
+        <SocialLinks direction="vertical" github={github} linkedin={linkedin} email={email} cvUrl={cvUrl} />
       </div>
 
       {/* Main content */}
@@ -119,7 +126,7 @@ export function HeroSection() {
 
       {/* Mobile social links */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 xl:hidden">
-        <SocialLinks direction="horizontal" />
+        <SocialLinks direction="horizontal" github={github} linkedin={linkedin} email={email} cvUrl={cvUrl} />
       </div>
     </section>
   );

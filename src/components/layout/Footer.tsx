@@ -4,7 +4,15 @@ import { useTranslations } from "next-intl";
 import { motion } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
 
-export function Footer() {
+type Props = {
+  github?: string;
+  linkedin?: string;
+  behance?: string;
+  email?: string;
+  cvUrl?: string;
+};
+
+export function Footer({ github, linkedin, behance, email, cvUrl }: Props) {
   const t = useTranslations("footer");
 
   return (
@@ -50,11 +58,11 @@ export function Footer() {
           className="mb-24 flex justify-center"
         >
           <a
-            href="mailto:matheusbatista.tech@gmail.com"
+            href={email ? `mailto:${email}` : "#"}
             className="flex items-center gap-4 rounded-full border border-border px-8 py-5 text-text-secondary transition-all hover:border-text-secondary hover:text-text-primary"
           >
             <span className="text-[14px] uppercase tracking-wider md:text-[16px]">
-              matheusbatista.tech@gmail.com
+              {email || "matheusbatista.tech@gmail.com"}
             </span>
             <div className="flex size-[25px] items-center justify-center">
               <ArrowUpRight size={20} strokeWidth={1.5} />
@@ -66,7 +74,7 @@ export function Footer() {
         <div className="mb-10 flex items-center justify-center gap-5">
           {/* LinkedIn */}
           <a
-            href="https://linkedin.com"
+            href={linkedin || "#"}
             target="_blank"
             rel="noopener noreferrer"
             className="flex size-[40px] items-center justify-center rounded-full border border-border text-text-secondary transition-colors hover:text-text-primary hover:border-text-secondary"
@@ -79,7 +87,7 @@ export function Footer() {
 
           {/* GitHub */}
           <a
-            href="https://github.com/matheusbatista1"
+            href={github || "#"}
             target="_blank"
             rel="noopener noreferrer"
             className="flex size-[40px] items-center justify-center rounded-full border border-border text-text-secondary transition-colors hover:text-text-primary hover:border-text-secondary"
@@ -92,7 +100,7 @@ export function Footer() {
 
           {/* Behance */}
           <a
-            href="#"
+            href={behance || "#"}
             target="_blank"
             rel="noopener noreferrer"
             className="flex size-[40px] items-center justify-center rounded-full border border-border text-text-secondary transition-colors hover:text-text-primary hover:border-text-secondary"
@@ -105,7 +113,7 @@ export function Footer() {
 
           {/* Download CV */}
           <a
-            href="#"
+            href={cvUrl || "#"}
             className="ml-2 flex items-center gap-2 rounded-full border border-border px-5 py-2.5 text-[14px] uppercase tracking-wider text-text-secondary transition-colors hover:text-text-primary hover:border-text-secondary"
           >
             {t("downloadCv")}
